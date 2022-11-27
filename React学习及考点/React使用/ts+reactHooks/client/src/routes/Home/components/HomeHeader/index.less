@@ -1,0 +1,46 @@
+@BG: #2A2A2A;
+
+.home-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    .logo-header {
+        height: 1rem;
+        background-color: @BG;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 2rem;
+            height: 100%;
+            margin-left: 0.2rem;
+        }
+        i {
+            font-size: .6rem;
+            margin-right: 0.2rem;
+        }
+    }
+    .category {
+        position: absolute;
+        width: 100%;
+        top: 1rem;
+        left: 0;
+        padding: .1rem .5rem;
+        background-color: @BG;
+        li {
+            line-height: .6rem;
+            font-size: .3rem;
+            text-align: center;
+            color: #fff;
+            border-top: .02rem solid lighten(@BG, 20%);
+            &.active {
+                color: darkgoldenrod;
+            }
+        }
+    }
+}
