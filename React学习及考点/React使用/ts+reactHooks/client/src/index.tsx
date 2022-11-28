@@ -12,6 +12,9 @@ import Profile from './routes/Profile'
 import { ConnectedRouter } from 'connected-react-router' // 路由库
 import history from '@/history'
 import Tabs from '@/components/Tabs'
+import Register from './routes/Register'
+import Login from './routes/Login'
+
 
 
 
@@ -24,6 +27,8 @@ render(
                         <Route path="/" exact component={Home} />
                         <Route path="/mine" component={Mine} />
                         <Route path="/profile" component={Profile} />
+                        <Route path="/register" component={Register} />
+                        <Route path="/login" component={Login} />
                     </Switch>
                 </main>
                 <Tabs />

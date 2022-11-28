@@ -30,7 +30,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         // 返回数据
         res.json({
             success: true,
-            data: user
+            data: user.toJSON()
         })
     } catch (e) {
         next(e)

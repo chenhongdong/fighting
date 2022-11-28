@@ -22,8 +22,8 @@ function Profile(props: IProfileProps) {
         content = (
             <div className='user-info'>
                 <Descriptions title="当前用户">
-                    <Descriptions.Item label="用户名">xiaobai</Descriptions.Item>
-                    <Descriptions.Item label="邮箱">1027272807@qq.com</Descriptions.Item>
+                    <Descriptions.Item label="用户名">{props.user.username}</Descriptions.Item>
+                    <Descriptions.Item label="邮箱">{props.user.email}</Descriptions.Item>
                 </Descriptions>
                 <Button type="danger" onClick={props.logout}>退出</Button>
             </div>

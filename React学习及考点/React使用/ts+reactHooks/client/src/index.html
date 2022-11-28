@@ -10,13 +10,12 @@
     <script>
         let  docEle = document.documentElement
         function refreshRem() {
+            // 把根元素 fontSize的值，设置为屏幕宽度的十分之一
             docEle.style.fontSize = docEle.clientWidth / 10 + 'px'
         }
         refreshRem()
 
-        window.addEventListener('resize', function() {
-            refreshRem()
-        })
+        window.addEventListener('resize', refreshRem)
 
     </script>
     <div id="root"></div>

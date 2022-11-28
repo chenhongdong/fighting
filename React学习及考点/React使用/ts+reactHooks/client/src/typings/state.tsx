@@ -9,7 +9,7 @@ export interface IMineState {
 }
 
 // 当前用户信息
-interface User {
+export interface User {
     username: string
     email: string
     avatar: string
@@ -22,9 +22,9 @@ export enum LOGIN_TYPES {
 }
 
 export interface IProfileState {
-    loginState: LOGIN_TYPES
-    user: User | null
-    error: string | null
+    loginState: LOGIN_TYPES    // 当前登录状态
+    user: User | null    // 当前的登录用户
+    error: string | null    // 当前错误信息
 }
 
 export interface RootState {
