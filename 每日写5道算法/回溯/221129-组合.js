@@ -1,5 +1,5 @@
 /* 
-2022/11/29 
+2022/11/29 23:38
 给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
 你可以按 任何顺序 返回答案。
 
@@ -17,5 +17,26 @@ https://leetcode.cn/problems/combinations/
  * @return {number[][]}
  */
 const combine = (n, k) => {
+    const res = []
 
+    backtrack(n, k, 1, [])
+
+    function backtrack(n, k, index, path) {
+        if (k === 0) {
+            res.push([...path])
+            return
+        }
+        for (let i = index; i <= n; i++) {
+            path.push(i)
+            backtrack(n, k - 1, i + 1, path)
+            path.pop()
+        }
+    }
+
+    return res
 }
+
+
+
+// test case
+console.log(combine(4, 2))

@@ -1,5 +1,5 @@
 /* 
-2022/11/29 
+2022/11/29 23:33
 给你一个二叉树的根节点 root ，树中每个节点都存放有一个 0 到 9 之间的数字。
 每条从根节点到叶节点的路径都代表一个数字：
 
@@ -10,7 +10,7 @@
 
 示例：
 
-    1
+	1
    / \
   2   3
 输入：root = [1,2,3]
@@ -28,5 +28,21 @@ https://leetcode.cn/problems/sum-root-to-leaf-numbers/
  * @return {number}
  */
 const sumNumbers = (root) => {
+	let sum = 0
 
+	dfs(root, '')
+
+	function dfs(root, s) {
+		if (!root) return 0
+		s += root.val
+
+		if (!root.left && !root.right) {
+			sum += Number(s)
+			return
+		}
+		dfs(root.left, s)
+		dfs(root.right, s)
+	}
+
+	return sum
 }

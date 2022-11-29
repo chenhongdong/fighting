@@ -1,3 +1,4 @@
+import { getSliders } from '@/api/home'
 import * as types from '../action-types'
 
 export default {
@@ -5,6 +6,12 @@ export default {
         return {
             type: types.SET_CURRENT_CATEGORY,
             payload: currentCategory
+        }
+    },
+    getSliders() {
+        return {
+            type: types.GET_SLIDERS,
+            payload: getSliders()
         }
     }
 }

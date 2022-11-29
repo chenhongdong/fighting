@@ -8,3 +8,6 @@ export const VALIDATE = 'VALIDATE'
 export const LOGOUT = 'LOGOUT'
 // 设置头像
 export const SET_AVATAR = 'SET_AVATAR'
+
+// 获取轮播图列表
+export const GET_SLIDERS = 'GET_SLIDERS'

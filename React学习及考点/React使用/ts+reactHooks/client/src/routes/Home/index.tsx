@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './index.less'
 import HomeHeader from './components/HomeHeader'
-import { RootState, IHomeState } from '@/typings/state'
+import HomeSliders from './components/HomeSliders'
+import { RootState, IHomeState } from '@/typings'
 import mapDispatchToProps from '@/store/actions/home'
 
 type IHomeProps = RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
 
 function Home(props: IHomeProps) {
+    const homeContainerRef = useRef<HTMLDivElement>(null)   // 普通对象，{current:null} => {current:HTMLDivElement}
+    
     return (
         <>
             <HomeHeader
                 currentCategory={props.currentCategory}
                 setCurrentCategory={props.setCurrentCategory}
             />
+            <div className="home-container" ref={homeContainerRef}>
+                <HomeSliders
+                    sliders={props.sliders}
+                    getSliders={props.getSliders}
+                />
+            </div>
         </>
     )
 }
