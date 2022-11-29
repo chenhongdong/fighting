@@ -58,13 +58,13 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    {
-                        loader: 'px2rem-loader',
-                        options: {
-                            remUnit: 75,    // 一个rem单位是75px
-                            remPrecision: 8 // 保留8位小数
-                        }
-                    }
+                    // {
+                    //     loader: 'px2rem-loader',
+                    //     options: {
+                    //         remUnit: 75,    // 一个rem单位是75px
+                    //         remPrecision: 8 // 保留8位小数
+                    //     }
+                    // }
                 ]
             },
             {

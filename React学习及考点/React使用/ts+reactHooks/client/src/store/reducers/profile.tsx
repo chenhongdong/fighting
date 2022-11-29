@@ -31,6 +31,11 @@ export default function (state: IProfileState = initialState, action: AnyAction)
                 user: null,
                 error: null
             }
+        case types.SET_AVATAR:
+            return {
+                ...state,
+                user: { ...state.user, avatar: action.payload }
+            }
         default:
             return state
     }

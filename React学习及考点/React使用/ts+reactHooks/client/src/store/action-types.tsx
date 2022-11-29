@@ -6,3 +6,5 @@ export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY'
 export const VALIDATE = 'VALIDATE'
 // 退出登录
 export const LOGOUT = 'LOGOUT'
+// 设置头像
+export const SET_AVATAR = 'SET_AVATAR'

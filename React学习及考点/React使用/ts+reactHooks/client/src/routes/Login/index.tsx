@@ -53,7 +53,7 @@ function Login(props: Props) {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit" className="login-form-button">登录</Button>
-                    或者 <Link to="/login">注册</Link>
+                    或者 <Link to="/register">注册</Link>
                 </Form.Item>
             </Form>
         </>

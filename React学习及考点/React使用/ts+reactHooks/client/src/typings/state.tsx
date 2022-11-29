@@ -12,7 +12,8 @@ export interface IMineState {
 export interface User {
     username: string
     email: string
-    avatar: string
+    avatar: string,
+    id?: string
 }
 // 枚举
 export enum LOGIN_TYPES {

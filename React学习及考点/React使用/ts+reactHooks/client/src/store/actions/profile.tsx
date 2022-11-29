@@ -55,5 +55,11 @@ export default {
                 }
             })()
         }
+    },
+    setAvatar(src: string) {
+        return {
+            type: types.SET_AVATAR,
+            payload: src
+        }
     }
 }

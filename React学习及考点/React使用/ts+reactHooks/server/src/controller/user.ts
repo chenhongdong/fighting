@@ -96,3 +96,22 @@ export const validate = async (req: Request, res: Response, next: NextFunction) 
         next(new HttpException(UNAUTHORIZED, 'authorization未提供'))
     }
 }
+
+
+export const uploadAvatar = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { userId } = req.body
+        // 协议://域名/uploads/文件名
+        const avatar = `${req.protocol}://${req.headers.host}/uploads/${req.file?.filename}`
+        
+        await User.updateOne({ _id: userId}, { avatar })
+        // 处理上传的文件，然后更新数据库中，此用户对应的avatar字段，回真实的图片路径
+        
+        res.json({
+            success: true,
+            data: avatar
+        })
+    } catch (err) {
+        next(err)
+    }
+}
