@@ -12,7 +12,7 @@ type Props = PropsWithChildren<{
 function HomeSliders(props: Props) {
     useEffect(() => {
         if (!props.sliders.length) {
-            props.getSliders()
+            const res = props.getSliders()
         }
     }, [])
     

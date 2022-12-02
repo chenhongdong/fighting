@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { IMineState } from '@/typings/state'
+import { IMineState } from '@/typings'
 
 const initialState: IMineState = {
 

@@ -6,6 +6,7 @@ import HomeHeader from './components/HomeHeader'
 import HomeSliders from './components/HomeSliders'
 import { RootState, IHomeState } from '@/typings'
 import mapDispatchToProps from '@/store/actions/home'
+import LessonList from './components/LessonList'
 
 type IHomeProps = RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
 
@@ -23,6 +24,7 @@ function Home(props: IHomeProps) {
                     sliders={props.sliders}
                     getSliders={props.getSliders}
                 />
+                <LessonList getLessons={props.getLessons} />
             </div>
         </>
     )

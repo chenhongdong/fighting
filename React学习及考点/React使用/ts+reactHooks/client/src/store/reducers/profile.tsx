@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { IProfileState, LOGIN_TYPES } from '@/typings/state'
+import { IProfileState, LOGIN_TYPES } from '@/typings'
 import * as types from '../action-types'
 
 // 初始值

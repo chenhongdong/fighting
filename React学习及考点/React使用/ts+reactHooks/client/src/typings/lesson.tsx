@@ -1,0 +1,18 @@
+import { ILessons } from "./home"
+
+
+export interface ILesson {
+    id: string
+    order: number
+    title: string
+    url: string
+    poster: string
+    video: string
+    price: string
+    category: string
+}
+
+export interface ILessonData {
+    success: boolean
+    data: ILessons
+}

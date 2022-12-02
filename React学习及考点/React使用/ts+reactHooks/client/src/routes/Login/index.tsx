@@ -1,4 +1,4 @@
-import { IProfileState, RootState } from "@/typings/state";
+import { IProfileState, RootState } from "@/typings";
 import { Form, Icon, Input, Button, message } from "antd";
 import React, { FormEvent } from "react";
 import { connect } from "react-redux";

@@ -10,7 +10,11 @@ import errorMiddleware from './middlewares/errorMiddleware'
 import HttpException from './exception/HttpException'
 import * as userController from './controller/user'
 import * as sliderController from './controller/slider'
-import { Slider } from './models'
+import * as lessonController from './controller/lesson'
+import { Slider, Lesson } from './models'
+
+
+import { slidersData, lessonsData } from './mock'
 
 
 // 指定头像上传的存储空间
@@ -53,8 +57,11 @@ app.get('/user/validate', userController.validate)
 // 上传后，会在req上添加个file属性， req.file
 app.post('/user/uploadAvatar', upload.single('avatar'), userController.uploadAvatar)
 
-
+// 轮播图列表路由
 app.get('/slider/list', sliderController.list)
+
+// 访问课程列表路由
+app.get('/lesson/list', lessonController.list)
 
 
 // 如果说没有匹配到路由，则会创建一个自定义404错误对象并传递给错误处理中间件
@@ -71,8 +78,10 @@ app.use(errorMiddleware)
     // await mongoose.set('useUnifiedTopology', true)
     const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/classroomapp'
     await mongoose.connect(MONGODB_URL)    // 连接mongodb数据库
-
+    // 初始化轮播图数据
     await createInitialSliders()
+    // 初始化课程数据
+    await createInitialLessons()
 
     const PORT = process.env.PORT || 8001
     app.listen(PORT, () => {
@@ -84,14 +93,16 @@ app.use(errorMiddleware)
 async function createInitialSliders() {
     const sliders = await Slider.find()
     if (sliders.length === 0) {
-        const slider = [
-            { url: 'https://gips2.baidu.com/it/u=172239836,473513474&fm=3028&app=3028&f=PNG&fmt=auto&q=100&size=f780_664' },
-            { url: 'https://gips0.baidu.com/it/u=906941158,2468653111&fm=3028&app=3028&f=PNG&fmt=auto&q=100&size=f780_664' },
-            { url: 'https://gips0.baidu.com/it/u=1346869942,2303340460&fm=3028&app=3028&f=JPEG&fmt=auto&q=75&size=f780_664' },
-            { url: 'https://gips3.baidu.com/it/u=3730289660,4293403919&fm=3028&app=3028&f=JPEG&fmt=auto&q=75&size=f780_664' },
-            { url: 'https://gips0.baidu.com/it/u=62340606,339905797&fm=3028&app=3028&f=PNG&fmt=auto&q=100&size=f780_664' }
-        ]
+        const data = slidersData
 
-        await Slider.create(slider)
+        await Slider.create(data)
+    }
+}
+
+async function createInitialLessons() {
+    const lessons = await Lesson.find()
+    if (lessons.length === 0) {
+        const data = lessonsData
+        await Lesson.create(data)
     }
 }

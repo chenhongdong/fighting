@@ -1,4 +1,4 @@
-import { ILoginPayload, IRegisterPayload } from "@/typings/profile";
+import { ILoginPayload, IRegisterPayload } from "@/typings";
 import request from "./index";
 
 export function validate() {

@@ -1,9 +1,9 @@
 import * as types from '../action-types'
 import { login, register, validate } from '@/api/profile'
 import { push } from 'connected-react-router'
-import { ILoginPayload, IRegisterPayload } from '@/typings/profile'
+import { ILoginPayload, IRegisterPayload } from '@/typings'
 import { message } from 'antd'
-import { ILoginData, IRegisterData } from '@/typings/response'
+import { ILoginData, IRegisterData } from '@/typings'
 
 export default {
     validate() {

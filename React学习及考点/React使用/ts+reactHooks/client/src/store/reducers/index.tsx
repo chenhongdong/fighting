@@ -4,7 +4,7 @@ import home from "./home";
 import mine from "./mine";
 import profile from "./profile";
 import history from '@/history';
-import { RootState } from '@/typings/state'
+import { RootState } from '@/typings'
 
 
 let reducers: ReducersMapObject<RootState, AnyAction> = {
