@@ -62,6 +62,7 @@ app.get('/slider/list', sliderController.list)
 
 // 访问课程列表路由
 app.get('/lesson/list', lessonController.list)
+app.get('/lesson/:id', lessonController.getLesson)
 
 
 // 如果说没有匹配到路由，则会创建一个自定义404错误对象并传递给错误处理中间件

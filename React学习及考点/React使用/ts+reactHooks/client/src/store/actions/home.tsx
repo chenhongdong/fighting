@@ -22,12 +22,37 @@ export default {
             (async () => {
                 let { currentCategory, lessons: { ismore, offset, limit, loading } } = getState().home
                 if (!loading && ismore) {
-                    // dispatch()  // 先把loading设为true
+                    // 先把loading设为true
+                    dispatch({
+                        type: types.SET_LESSONS_LOADING,
+                        payload: true
+                    })
                     // 调接口加载数据
                     let res = await getLessons<ILessonData>(currentCategory, offset, limit)
                     // 再把loading设为false
                     dispatch({
                         type: types.SET_LESSONS,
+                        payload: res.data
+                    })
+                }
+            })()
+        }
+    },
+    refreshLessons() {
+        return function (dispatch: StoreDispatch, getState: StoreGetState) {
+            (async () => {
+                let { currentCategory, lessons: { limit, loading } } = getState().home
+                if (!loading) {
+                    // 先把loading设为true
+                    dispatch({
+                        type: types.SET_LESSONS_LOADING,
+                        payload: true
+                    })
+                    // 调接口加载数据
+                    let res = await getLessons<ILessonData>(currentCategory, 0, limit)
+                    // 再把loading设为false
+                    dispatch({
+                        type: types.REFRESH_LESSONS,
                         payload: res.data
                     })
                 }

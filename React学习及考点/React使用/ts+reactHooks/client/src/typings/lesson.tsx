@@ -16,3 +16,9 @@ export interface ILessonData {
     success: boolean
     data: ILessons
 }
+
+
+export interface IGetLessonData {
+    success: boolean
+    data: ILesson
+}

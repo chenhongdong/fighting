@@ -20,3 +20,17 @@ export const GET_LESSONS = 'GET_LESSONS'
 export const SET_LESSONS_LOADING = 'SET_LESSONS_LOADING'
 // 下拉刷新
 export const REFRESH_LESSONS = 'REFRESH_LESSONS'
+
+
+// 加购
+export const ADD_CART_ITEM = 'ADD_CART_ITEM'
+// 减购
+export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
+// 清空购物车
+export const CLEAR_CART_ITEM = 'CLEAR_CART_ITEM'
+// 修改商品数量
+export const CHANGE_CART_ITEM_COUNT = 'CHANGE_CART_ITEM_COUNT'
+// 修改选中的商品
+export const CHANGE_CHECKED_CART_ITEMS = 'CHANGE_CHECKED_CART_ITEMS'
+// 结算，把选中的商品添加到订单，然后从购物车中删除
+export const SETTLE = 'SETTLE'

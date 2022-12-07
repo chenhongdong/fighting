@@ -25,28 +25,22 @@ export default function (state: IHomeState = initialState, action: AnyAction): I
             } else {
                 return { ...state, sliders: action.payload.data }
             }
-        case types.GET_LESSONS:
+        case types.SET_LESSONS_LOADING:
             state.lessons.loading = action.payload
-
             return state
-            // return {
-            //     ...state,
-            //     lessons: {
-            //         ...state.lessons,
-            //         loading: action.payload
-            //     }
-            // }
         case types.SET_LESSONS:
-            return {
-                ...state,
-                lessons: {
-                    ...state.lessons,
-                    loading: false,
-                    list: [...state.lessons.list, ...action.payload.list],
-                    ismore: action.payload.ismore,
-                    offset: state.lessons.offset + action.payload.list.length
-                }
-            }
+            // 通过immer可以直接这样写，也不会修改老的值
+            state.lessons.loading = false
+            state.lessons.list = [...state.lessons.list, ...action.payload.list]
+            state.lessons.ismore = action.payload.ismore
+            state.lessons.offset = state.lessons.offset + action.payload.list.length
+            return state
+        case types.REFRESH_LESSONS:
+            state.lessons.loading = false
+            state.lessons.list = action.payload.list
+            state.lessons.ismore = action.payload.ismore
+            state.lessons.offset = action.payload.list.length
+            return state
         default:
             return state
     }

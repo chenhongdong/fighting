@@ -14,8 +14,8 @@ import history from '@/history'
 import Tabs from '@/components/Tabs'
 import Register from './routes/Register'
 import Login from './routes/Login'
-
-
+import Detail from './routes/Detail'
+import Cart from './routes/Cart'
 
 
 render(
@@ -29,6 +29,8 @@ render(
                         <Route path="/profile" component={Profile} />
                         <Route path="/register" component={Register} />
                         <Route path="/login" component={Login} />
+                        <Route path="/detail/:id" component={Detail} />
+                        <Route path="/cart" component={Cart} />
                     </Switch>
                 </main>
                 <Tabs />

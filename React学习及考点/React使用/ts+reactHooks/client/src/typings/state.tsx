@@ -1,5 +1,5 @@
 import { RouterState } from 'connected-react-router'
-import { IHomeState } from './home'
+import { IHomeState, CartState } from './'
 
 export interface IMineState {
 
@@ -25,10 +25,12 @@ export interface IProfileState {
     error: string | null    // 当前错误信息
 }
 
+
 export interface RootState {
     home: IHomeState
     mine: IMineState
     profile: IProfileState
+    cart: CartState
     router: RouterState
 }
 

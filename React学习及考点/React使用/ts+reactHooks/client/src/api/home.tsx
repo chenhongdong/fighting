@@ -16,3 +16,13 @@ export function getSliders() {
 export function getLessons<T>(category: string = 'all', offset: number, limit: number) {
     return request.get<T, T>(`/lesson/list?category=${category}&offset=${offset}&limit=${limit}`)
 }
+
+
+/**
+ * 
+ * @param id 获取课程详情的id
+ * @returns 
+ */
+export function getLesson<T>(id: string) {
+    return request.get<T, T>(`/lesson/${id}`)
+}

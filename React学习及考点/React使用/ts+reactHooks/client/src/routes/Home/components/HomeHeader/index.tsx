@@ -33,8 +33,9 @@ const transitionStyle: ITransitionStyle = {
 
 
 interface IHomeHeaderProps {
-    currentCategory: string;  // 当前选中的分类，此数据会放在redux仓库
-    setCurrentCategory: (currentCategory: string) => any;     // 改变仓库中的分类
+    currentCategory: string  // 当前选中的分类，此数据会放在redux仓库
+    setCurrentCategory: (currentCategory: string) => any     // 改变仓库中的分类
+    refreshLessons: Function
 }
 
 function HomeHeader(props: IHomeHeaderProps) {
@@ -47,6 +48,8 @@ function HomeHeader(props: IHomeHeaderProps) {
         props.setCurrentCategory(category)
         // 关闭菜单
         setMenuVisible(false)
+        // 刷新分类的数据
+        props.refreshLessons()
     }
 
     return (
