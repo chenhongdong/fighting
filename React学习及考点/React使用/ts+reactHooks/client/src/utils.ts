@@ -27,13 +27,18 @@ export function downpullRefresh(ele: HTMLDivElement, cb: Function) {
     let dis: number         // 本次下拉的距离
     let originTop = ele.offsetTop   // 最初元素距离顶部的高度
     let timer: any
-    
+    let currentTop: number      // 当前top值
+
     ele.addEventListener('touchstart', (e: TouchEvent) => {
+        if (timer) {
+            clearInterval(timer)
+        }
         let touchMove = throttle(_touchMove, 60)
 
         // 只有处于原始位置的时候才能下拉，回弹的过程中则不能拉
         // 并且此元素向上滚动的高度为0
-        if (ele.offsetTop === originTop && ele.scrollTop === 0) {
+        if (ele.scrollTop === 0) {
+            currentTop = ele.offsetTop      // 记录一下开始的top值
             startY = e.touches[0].pageY    // 记录当前触摸的纵坐标
             ele.addEventListener('touchmove', touchMove)
             ele.addEventListener('touchend', touchEnd)
@@ -44,7 +49,7 @@ export function downpullRefresh(ele: HTMLDivElement, cb: Function) {
             let pageY = e.touches[0].pageY    // 拿到最新的纵坐标
             if (pageY > startY) {   // 下拉
                 dis = pageY - startY
-                ele.style.top = originTop + dis + 'px'
+                ele.style.top = currentTop + dis + 'px'
             } else {    // 上拉，取消事件
                 console.log('上拉了？');
                 
@@ -57,19 +62,20 @@ export function downpullRefresh(ele: HTMLDivElement, cb: Function) {
             ele.removeEventListener('touchmove', touchMove)
             ele.removeEventListener('touchend', touchEnd)
 
+            
+
+            timer = setInterval(() => {
+                const top = ele.offsetTop
+                if (top - originTop > 1) {
+                    ele.style.top = (top - 1) + 'px'
+                } else {
+                    ele.style.top = originTop + 'px'
+                }
+            }, 13)
+
             if (dis > 30) {
                 cb()
             }
-
-            timer = setInterval(() => {
-                if (dis < 1) {
-                    ele.style.top = originTop + 'px'
-                    clearInterval(timer)
-                    timer = null
-                }
-                dis--
-                ele.style.top = originTop + dis + 'px'
-            }, 13)
         }
     })
 }

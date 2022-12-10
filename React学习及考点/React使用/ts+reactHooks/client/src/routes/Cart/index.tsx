@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import './index.less'
 import { CartState, ICartItem, ILesson, RootState } from "@/typings";
 import actions from '@/store/actions/cart'
-import { Table, InputNumber } from 'antd'
+import { Table, InputNumber, Popconfirm, Button, Row, Col, Badge } from 'antd'
 import Nav from '@/components/Nav'
 
 
-type Props = PropsWithChildren<RouteComponentProps & ReturnType<typeof mapStateToProps>>
+type Props = PropsWithChildren<RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof actions>
 
 function Cart(props: Props) {
     const columns = [
@@ -16,8 +16,6 @@ function Cart(props: Props) {
             title: '商品',
             detaIndex: 'lesson',
             render: (val: ILesson, row: ICartItem) => {
-                console.log('上哦', val)
-                console.log('下哦', row)
                 return (
                     <>
                         <p>{row.lesson.title}</p>
@@ -30,29 +28,67 @@ function Cart(props: Props) {
             title: '数量',
             detaIndex: 'count',
             render: (val: number, row: ICartItem) => {
-                console.log('数量', val, row);
-                
                 return (
-                   <InputNumber
+                    <InputNumber
                         size="small"
                         min={1}
                         value={row.count}
                         onChange={(value) => props.changeCartItemCount(row.lesson.id, value)}
-                   />
+                    />
+                )
+            }
+        },
+        {
+            title: '操作',
+            detaIndex: 'lesson',
+            render: (val: number, row: ICartItem) => {
+                return (
+                    <Popconfirm
+                        title="是否要删除商品"
+                        onConfirm={() => props.removeCartItem(row.lesson.id)}
+                        okText="是"
+                        cancelText="否"
+                    >
+                        <Button size="small" type="primary">删除</Button>
+                    </Popconfirm>
                 )
             }
         }
     ]
+
+
+    const selectedRowKeys = props.cart.filter((item: ICartItem) => item.checked).map((item: ICartItem) => item.lesson.id)
+    const rowSelection = {
+        selectedRowKeys,
+        onChange: (selectedRowKeys: string[]) => {
+            props.changeCheckedCartItems(selectedRowKeys)
+        }
+    }
+
+    const totalCount = props.cart.filter((item: ICartItem) => item.checked).reduce((total: number, item: ICartItem) => total + item.count, 0)
+    const totalPrice = props.cart.filter((item: ICartItem) => item.checked).reduce((total: number, item: ICartItem) => total + item.count * item.lesson.price, 0)
+
     return (
-        <>
+        <div className="cart">
             <Nav history={props.history}>购物车</Nav>
             <Table
                 columns={columns}
-                key={Math.random()}
                 pagination={false}
                 dataSource={props.cart}
+                rowSelection={rowSelection}
+                rowKey={row => row.lesson.id}
             />
-        </>
+            <Row style={{padding: '5px'}}>
+                <Col span={4}><Button type="danger" size="small" onClick={props.clearCartItem}>清空</Button></Col>
+                <Col span={8}>
+                    已选择了{totalCount > 0 ? <Badge count={totalCount} /> : 0}件商品
+                </Col>
+                <Col span={7}>
+                    一共{totalPrice}元
+                </Col>
+                <Col span={5}><Button type="primary" onClick={props.settle}>去结算</Button></Col>
+            </Row>
+        </div>
     )
 }
 

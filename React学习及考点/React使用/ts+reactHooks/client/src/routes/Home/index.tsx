@@ -8,15 +8,23 @@ import { RootState, IHomeState } from '@/typings'
 import mapDispatchToProps from '@/store/actions/home'
 import LessonList from './components/LessonList'
 import { loadMore, downpullRefresh } from '@/utils'
+import { Spin } from 'antd'
 
 type IHomeProps = RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
 
 function Home(props: IHomeProps) {
     const homeContainerRef = useRef<HTMLDivElement>(null)   // 普通对象，{current:null} => {current:HTMLDivElement}
-    
+
     useEffect(() => {
         loadMore(homeContainerRef.current, props.getLessons)
         downpullRefresh(homeContainerRef.current, props.refreshLessons)
+
+        if (props.lessons.list.length > 0) {
+            homeContainerRef.current.scrollTop = parseInt(localStorage.getItem('homeScrollTop'))
+        }
+        return () => {
+            localStorage.setItem('homeScrollTop', homeContainerRef.current.scrollTop + '')
+        }
     }, [])
 
     return (
@@ -26,12 +34,16 @@ function Home(props: IHomeProps) {
                 setCurrentCategory={props.setCurrentCategory}
                 refreshLessons={props.refreshLessons}
             />
+            <div className="refresh-loading">
+                <Spin size="large" />
+            </div>
             <div className="home-container" ref={homeContainerRef}>
                 <HomeSliders
                     sliders={props.sliders}
                     getSliders={props.getSliders}
                 />
                 <LessonList
+                    container={homeContainerRef}
                     getLessons={props.getLessons}
                     lessons={props.lessons}
                 />

@@ -8,7 +8,7 @@ export interface ILesson {
     url: string
     poster: string
     video: string
-    price: string
+    price: number
     category: string
 }
 

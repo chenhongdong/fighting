@@ -5,7 +5,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=415711640,2038107640&fm=253&fmt=auto&app=138&f=JPEG?w=888&h=500",
         "url": "https://coding.imooc.com/class/614.html",
-        "price": "￥268.00",
+        "price": 268,
         "category": "all"
     },
     {
@@ -14,7 +14,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=1793342829,1531837408&fm=253&fmt=auto&app=138&f=JPEG?w=754&h=435",
         "url": "https://coding.imooc.com/class/608.html",
-        "price": "￥548.00",
+        "price": 548,
         "category": "vue"
     },
     {
@@ -23,7 +23,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=1184259120,536803082&fm=253&fmt=auto&app=138&f=JPEG?w=984&h=492",
         "url": "https://coding.imooc.com/class/577.html",
-        "price": "￥499.00",
+        "price": 499,
         "category": "vue"
     },
     {
@@ -32,7 +32,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=618866519,229528446&fm=253&fmt=auto&app=138&f=JPEG?w=890&h=500",
         "url": "https://coding.imooc.com/class/600.html",
-        "price": "￥368.00",
+        "price": 368,
         "category": "all"
     },
     {
@@ -41,7 +41,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://t7.baidu.com/it/u=2511982910,2454873241&fm=193&f=GIF",
         "url": "https://coding.imooc.com/class/613.html",
-        "price": "￥1299.00",
+        "price": 1299,
         "category": "all"
     },
     {
@@ -50,7 +50,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://t7.baidu.com/it/u=2763645735,2016465681&fm=193&f=GIF",
         "url": "https://coding.imooc.com/class/570.html",
-        "price": "￥398.00",
+        "price": 398,
         "category": "react"
     },
     {
@@ -59,7 +59,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=3419760843,140897222&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=427",
         "url": "https://coding.imooc.com/class/551.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "vue"
     },
     {
@@ -68,7 +68,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=1578336602,1366171382&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313",
         "url": "https://coding.imooc.com/class/553.html",
-        "price": "￥299.00",
+        "price": 299,
         "category": "all"
     },
     {
@@ -77,7 +77,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=474962724,685672737&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=392",
         "url": "https://coding.imooc.com/class/555.html",
-        "price": "￥299.00",
+        "price": 299,
         "category": "react"
     },
     {
@@ -86,7 +86,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=1462977925,1185044208&fm=253&fmt=auto&app=138&f=JPEG?w=658&h=494",
         "url": "https://coding.imooc.com/class/543.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "react"
     },
     {
@@ -95,7 +95,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img1.baidu.com/it/u=3671124997,420370215&fm=253&fmt=auto&app=138&f=JPEG?w=625&h=500",
         "url": "https://coding.imooc.com/class/542.html",
-        "price": "￥458.00",
+        "price": 458,
         "category": "vue"
     },
     {
@@ -104,7 +104,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img1.baidu.com/it/u=1663194132,1336122766&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500",
         "url": "https://coding.imooc.com/class/503.html",
-        "price": "￥448.00",
+        "price": 448,
         "category": "vue"
     },
     {
@@ -113,7 +113,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=3723997613,2566125138&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281",
         "url": "https://coding.imooc.com/class/475.html",
-        "price": "￥299.00",
+        "price": 299,
         "category": "react"
     },
     {
@@ -122,7 +122,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=249811878,2500060578&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281",
         "url": "https://coding.imooc.com/class/482.html",
-        "price": "￥368.00",
+        "price": 368,
         "category": "react"
     },
     {
@@ -131,7 +131,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=3277347722,259224316&fm=253&fmt=auto&app=138&f=JPEG?w=682&h=500",
         "url": "https://coding.imooc.com/class/520.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "all"
     },
     {
@@ -140,7 +140,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=1829012116,4073251249&fm=253&fmt=auto&app=138&f=JPEG?w=600&h=443",
         "url": "https://coding.imooc.com/class/449.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "vue"
     },
     {
@@ -149,7 +149,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img1.baidu.com/it/u=2072515579,1485453811&fm=253&fmt=auto&app=138&f=JPG?w=400&h=285",
         "url": "https://coding.imooc.com/class/452.html",
-        "price": "￥366.00",
+        "price": 366,
         "category": "react"
     },
     {
@@ -158,7 +158,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=1096435581,161618604&fm=253&fmt=auto&app=138&f=JPEG?w=822&h=500",
         "url": "https://coding.imooc.com/class/412.html",
-        "price": "￥266.00",
+        "price": 266,
         "category": "all"
     },
     {
@@ -167,7 +167,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=3618462318,1908668831&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500",
         "url": "https://coding.imooc.com/class/419.html",
-        "price": "￥399.00",
+        "price": 399,
         "category": "all"
     },
     {
@@ -176,7 +176,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=3838781694,2646159641&fm=253&fmt=auto&app=138&f=JPEG?w=450&h=338",
         "url": "https://coding.imooc.com/class/400.html",
-        "price": "￥299.00",
+        "price": 299,
         "category": "all"
     },
     {
@@ -185,7 +185,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=3526161068,2492226960&fm=253&fmt=auto&app=120&f=JPEG?w=620&h=387",
         "url": "https://coding.imooc.com/class/348.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "react"
     },
     {
@@ -194,7 +194,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img1.baidu.com/it/u=4286833656,3721488900&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500",
         "url": "https://coding.imooc.com/class/401.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "vue"
     },
     {
@@ -203,7 +203,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=450062791,1689136432&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500",
         "url": "https://coding.imooc.com/class/316.html",
-        "price": "￥299.00",
+        "price": 299,
         "category": "all"
     },
     {
@@ -212,7 +212,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=1346323830,4106266004&fm=253&fmt=auto&app=138&f=JPEG?w=533&h=300",
         "url": "https://coding.imooc.com/class/309.html",
-        "price": "￥466.00",
+        "price": 466,
         "category": "react"
     },
     {
@@ -221,7 +221,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=4257239010,1376081226&fm=253&fmt=auto&app=138&f=JPG?w=649&h=500",
         "url": "https://coding.imooc.com/class/285.html",
-        "price": "￥366.00",
+        "price": 366,
         "category": "vue"
     },
     {
@@ -230,7 +230,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img2.baidu.com/it/u=3719811211,1131481123&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=468",
         "url": "https://coding.imooc.com/class/203.html",
-        "price": "￥348.00",
+        "price": 348,
         "category": "vue"
     },
     {
@@ -239,7 +239,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img1.baidu.com/it/u=3032352754,1324037889&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500",
         "url": "https://coding.imooc.com/class/229.html",
-        "price": "￥299.00",
+        "price": 299,
         "category": "react"
     },
     {
@@ -248,7 +248,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=64955852,825905614&fm=253&fmt=auto&app=120&f=JPEG?w=1366&h=768",
         "url": "https://coding.imooc.com/class/228.html",
-        "price": "￥466.00",
+        "price": 466,
         "category": "vue"
     },
     {
@@ -257,7 +257,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img1.baidu.com/it/u=722404855,2362167100&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281",
         "url": "https://coding.imooc.com/class/251.html",
-        "price": "￥366.00",
+        "price": 366,
         "category": "all"
     },
     {
@@ -266,7 +266,7 @@
         "video": "http://img.zhufengpeixun.cn/gee2.mp4",
         "poster": "https://img0.baidu.com/it/u=1588966418,1000055537&fm=253&fmt=auto&app=138&f=JPEG?w=891&h=500",
         "url": "https://coding.imooc.com/class/285.html",
-        "price": "￥366.00",
+        "price": 366,
         "category": "vue"
     }
 ]
