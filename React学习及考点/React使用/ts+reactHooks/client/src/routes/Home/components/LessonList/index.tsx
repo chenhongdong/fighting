@@ -33,25 +33,28 @@ function LessonList(props: Props) {
         start = Math.floor((scrollTop - (4.2 + 1.33) * rootFontSize) / (8.66667 * rootFontSize))
     }
 
+    if (start < 0) start = 0
+
     return (
         <section className="lesson-list">
             <h2><Icon type="menu" />全部课程</h2>
             <Skeleton loading={props.lessons.loading && props.lessons.list.length === 0} paragraph={{ rows: 8 }} active>
+                <div style={{ height: `${8.66667 * rootFontSize * start}px` }}></div>
                 {
-                    props.lessons.list.map((item: ILesson, index: number) => (
-                        index >= start && index <= start + 2 ? (
-                            <Link to={{ pathname: `/detail/${item.id}`, state: item }} key={item.id}>
-                                <Card
-                                    key={item.id}
-                                    hoverable={true}
-                                    style={{ width: '100%' }}
-                                    cover={<img src={item.poster} crossOrigin="anonymous" />}
-                                >
-                                    <Card.Meta title={item.title} description={`价格:${item.price}元`} />
-                                </Card>
-                            </Link>) : <div key={item.id} style={{ height: `${8.66667 * rootFontSize}px` }}></div>
+                    props.lessons.list.slice(start, start + 3).map((item: ILesson, index: number) => (
+                        <Link to={{ pathname: `/detail/${item.id}`, state: item }} key={item.id}>
+                            <Card
+                                key={item.id}
+                                hoverable={true}
+                                style={{ width: '100%' }}
+                                cover={<img src={item.poster} crossOrigin="anonymous" />}
+                            >
+                                <Card.Meta title={item.title} description={`价格:${item.price}元`} />
+                            </Card>
+                        </Link>
                     ))
                 }
+                <div style={{ height: `${8.66667 * rootFontSize * (props.lessons.list.length - start - 3)}px` }}></div>
             </Skeleton>
             {
                 props.lessons.ismore ?

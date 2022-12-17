@@ -25,5 +25,33 @@ https://leetcode.cn/problems/minimum-size-subarray-sum/description/
  * @return {number}
  */
 const minSubArrayLen = (target, nums) => {
-
+    // 利用滑动窗口的思路
+    let l = 0, r = -1
+    const len = nums.length
+    // 长度最小的子数组个数，取一个超大的值
+    let min = len + 1
+    // 计算总和
+    let sum = 0
+    // 遍历整个数组
+    while (l < len) {
+        // 如果sum还小于目标值
+        if (sum < target) {
+            // 就让右指针向后移动，sum加上其所对应的数值
+            sum += nums[++r]
+        } else {
+            // 否则就让左指针l向右移动，sum减去对应的值
+            sum -= nums[l++]
+        }
+        // 直到sum大于等于目标值的时候，才开始去比较长度最小的子数组个数
+        if (sum >= target) {
+            // r - l + 1为滑动窗口计算出的符合目标值的范围
+            min = Math.min(min, r - l + 1)
+        }
+    }
+    // 如果min还等于初始值，就表示没找到满足的条件，返回0
+    if (min === len + 1) return 0
+    // 返回长度最小子数组的个数
+    return min
 }
+
+
