@@ -5,7 +5,7 @@ const path = require('path')
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.tsx',
+    entry: './src/index-tree.tsx',
     output: {
         path: path.join(__dirname, 'dist')
     },

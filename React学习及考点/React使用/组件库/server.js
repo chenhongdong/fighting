@@ -17,13 +17,13 @@ app.get('/getChildren', (req, res) => {
             errno: 0,
             data: [
                 {
-                    name: `${data.name}的儿子1`,
+                    name: '货运',
                     key: `${data.key}-1`,
                     type: 'folder',
                     collapsed: true
                 },
                 {
-                    name: `${data.name}的儿子2`,
+                    name: '青桔单车',
                     key: `${data.key}-2`,
                     type: 'folder',
                     collapsed: true

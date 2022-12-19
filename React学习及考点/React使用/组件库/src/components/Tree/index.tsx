@@ -63,6 +63,7 @@ class Tree extends Component<Props, State> {
                 data.collapsed = !data.collapsed
                 data.children = data.children || []    // 后面会改成懒加载
                 this.setState({ data: this.state.data })
+                
             } else {    // 如果没有children属性，则说明儿子未加载，需要加载
 
                 // 先把loading展示出来
