@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express()
+const path = require('path')
+const formidable = require('formidable')
+const fs = require('fs')
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -8,6 +11,10 @@ app.use((req, res, next) => {
     }
     next()
 })
+
+const uploadDir = path.resolve(__dirname, 'uploads')
+
+app.use(express.static(uploadDir))
 
 
 app.get('/getChildren', (req, res) => {
@@ -33,4 +40,31 @@ app.get('/getChildren', (req, res) => {
     }, 1200)
 })
 
-app.listen(3000)
+
+
+
+/* 
+filepath: '/Users/chenhongdong/Desktop/备战高考/React学习及考点/React使用/组件库/uploads/e127101b0cffef42899d73400',
+newFilename: 'e127101b0cffef42899d73400',
+originalFilename: '2020.png',
+mimetype: 'image/png'
+*/
+app.post('/upload', (req, res, next) => {
+    const form = formidable({ uploadDir, multiples: true })
+
+    form.parse(req, (err, fields, files) => {
+        console.log('所有字段', fields)  // { filename: 文件名} 这里是通过formData.append('filename', 文件名)
+        console.log('请求图片', files, files.newFilename, files.originalFilename)
+        if (err) {
+            next(err)
+            return
+        }
+        const file = files.file
+        const filename = file.newFilename + path.extname(file.originalFilename)
+        fs.renameSync(file.filepath, path.join(uploadDir, filename))
+
+        res.json({ url: `http://localhost:9001/${filename}` })
+    })
+})
+
+app.listen(9001)

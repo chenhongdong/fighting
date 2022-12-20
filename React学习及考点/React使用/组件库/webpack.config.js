@@ -1,11 +1,10 @@
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 
 module.exports = {
     mode: 'development',
-    entry: './src/index-tree.tsx',
+    entry: './src/index-upload.tsx',
     output: {
         path: path.join(__dirname, 'dist')
     },
@@ -16,7 +15,10 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+        alias: {
+            '@': path.join(__dirname, 'src')
+        }
     },
     module: {
         rules: [
@@ -28,6 +30,10 @@ module.exports = {
                 enforce: 'pre',  // 方便调试  顺序 pre normal inline post
                 test: /\.tsx?$/,
                 loader: 'source-map-loader'    // 从源代码中提取sourcemap，目的方便调试
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.less$/,
