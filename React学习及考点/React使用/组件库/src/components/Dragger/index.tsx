@@ -118,6 +118,7 @@ const Dragger: React.FC<DragProps> = function (props: DragProps): JSX.Element {
         }
     }
 
+
     // useEffect中的函数会在组件挂载完成，真实DOM挂载完成后执行，或者更新完成后执行
     useEffect(() => {
         // DOM绑定事件

@@ -1,0 +1,11 @@
+.circle {
+    width: 200px;
+    height: 200px;
+    background-color: blueviolet;
+    transition: all 1s;
+    border-radius: 50%;
+}
+.active
+{
+    background-color: yellowgreen;
+}

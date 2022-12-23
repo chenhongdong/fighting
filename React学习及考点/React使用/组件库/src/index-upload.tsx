@@ -10,7 +10,6 @@ import Dragger, { DragProps, UploadFile } from "./components/Dragger";
 
 const props: DragProps = {
     name: 'file',
-    // action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     action: 'http://localhost:9001/upload',
     onChange: (uploadFile: UploadFile) => {   // 当上传状态发生改变的时候会执行回调
         console.log('信息： ', uploadFile)
