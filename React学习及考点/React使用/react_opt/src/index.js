@@ -1,30 +1,28 @@
 import React from "react";
 import { render } from 'react-dom'
-// 引入别名
-// import 'bootstrap'
-// 不打包lodash，通过cdn引入，全局变量为_
-// import { debounce, throttle } from 'lodash'
+// import VirtualList from 'react-tiny-virtual-list'
+import VirtualList from "./VirtualList";
 
-import { HashRouter, Route, Link } from 'react-router-dom'
-
-
-import { dynamic } from './utils'
-const LazyHome = dynamic(() => import(/*webpackPrefetch:true*/'./components/Home'))
-const LazyUser = dynamic(() => import(/*webpackPrefetch:true*/'./components/User'))
-
-
-
+const data = Array(30).fill(1)
 
 render(
-    <div>
-        <HashRouter>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/user">User</Link></li>
-            </ul>
-            <Route exact={true} path="/" component={LazyHome} />
-            <Route path="/user" component={LazyUser} />
-        </HashRouter>
-    </div>
-    , document.querySelector('#root')
+    <VirtualList
+        width="50%"
+        height={500}
+        itemCount={data.length}
+        itemSize={50}
+        renderItem={
+            (data) => {
+                console.log(data)
+                let { index, style } = data
+
+                return (
+                    <div key={index} style={{...style, backgroundColor: index % 2 ? 'green' : 'orange'}}>
+                        {index + 1}
+                    </div>
+                )
+            }
+        }
+    />,
+    document.getElementById('root')
 )

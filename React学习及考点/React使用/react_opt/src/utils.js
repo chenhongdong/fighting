@@ -39,3 +39,64 @@ function mylazy(loadComponent) {
         }
     }
 }
+
+
+
+// 实现PureComponent
+export class PureComponent extends Component {
+    shouldComponentUpdate(nextProps, nextState) {
+        // 只要属性和状态都一样就不更新，有一个不一样就更新
+        return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState)
+    }
+}
+
+
+/**
+ * shallowEqual 做个浅比较，只比较一层，性能比较高
+ * @param {*} obj1 
+ * @param {*} obj2 
+ * @returns 
+ */
+function shallowEqual(obj1, obj2) {
+    if (obj1 === obj2) return true
+
+    let keys1 = Object.keys(obj1)
+    let keys2 = Object.keys(obj2)
+    if (keys1.length !== keys2.length) {
+        return false
+    }
+
+    for (let key of keys1) {
+        if (!obj2.hasOwnProperty(key) || obj1[key] !== obj2[key]) {
+            return false
+        }
+    }
+
+    return true
+}
+
+
+// 实现memo，继承PureComponent就完成
+export function memo(FnComponent) {
+    return class extends PureComponent {
+        render() {
+            return <FnComponent {...this.props} />
+        }
+    }
+}
+
+
+
+// 实现createSelector，有缓存功能
+export function createSelector(selectors, map) {
+    let lastValue
+    return (state) => {
+        if (lastValue) {
+            return lastValue
+        }
+        const values = selectors.map(selector => selector(state))
+        const result = map(...values)
+        lastValue = result
+        return lastValue
+    }
+}
