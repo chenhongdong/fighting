@@ -88,15 +88,15 @@ export function memo(FnComponent) {
 
 
 // 实现createSelector，有缓存功能
-export function createSelector(selectors, map) {
-    let lastValue
+export function createSelector(selectors, callback) {
+    let lastValue, lastState
     return (state) => {
-        if (lastValue) {
+        if (lastState === state) {
             return lastValue
         }
         const values = selectors.map(selector => selector(state))
-        const result = map(...values)
-        lastValue = result
+        lastValue = callback(...values)
+        lastState = state
         return lastValue
     }
 }
