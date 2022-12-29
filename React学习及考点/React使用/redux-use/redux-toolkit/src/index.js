@@ -1,98 +1,71 @@
-import { configureStore, createAction, createReducer, createSlice } from '@reduxjs/toolkit'
-// import { configureStore, createAction, createReducer, createSlice, createSelector } from '../toolkit'
+// import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
+
+import { configureStore, createSlice, createAsyncThunk } from '../toolkit'
+
+// createAsyncThunk用来发送数据请求
+
+/**
+ * createAsyncThunk是一个函数
+ * 接收两个参数
+ *      参数1： 接收redux的动作类型
+ *      参数2： 返回promise的函数
+ * 返回一个actionCreator
+ * 它会基于你传递的动作类型前缀生成promise生命周期的动作类型
+ *              promise生命周期： pending fulfilled rejected
+ *          todos/list/pending
+ *          todos/list/fulfilled
+ *          todos/list/rejected
+ */
+const getTodoList = createAsyncThunk('todos/list', async (id) => {
+    return await axios.get('http://localhost:9000/todos/list')   // 请求列表
+
+    // return await axios.get(`http://localhost:9000/todos/detail/${id}`)  // 可以传参id
+})
+// 定义初始状态
+const initialState = {
+    todos: [],
+    loading: false,
+    error: null
+}
 
 
-// createAction完成action creator
-const counter1Slice = createSlice({
-    name: 'counter1',    // 命名空间
-    initialState: { number: 0 },
-    reducers: {
-        add: (state, action) => {
-            state.number += 1
+const todoSlice = createSlice({
+    name: 'todos',
+    initialState,
+    reducers: {},   // 它会接收action，返回新的状态
+    extraReducers: {    // 不会自己加前缀，需要手写
+        [getTodoList.pending.type]: (state, action) => { // type: todos/list/pending
+            state.loading = true
         },
-        minus: (state, action) => {
-            state.number -= action.payload
+        [getTodoList.fulfilled.type]: (state, action) => {  // type: todos/list/fulfilled
+            state.todos = action.payload.data
+            state.loading = false
+        },
+        [getTodoList.rejected.type]: (state, action) => {    // type: todos/list/rejected
+            state.loading = false
+            state.error = action.error.message
         }
     }
 })
-const { actions: actions1, reducer: counter1Reducer } = counter1Slice
-
-const counter2Slice = createSlice({
-    name: 'counter2',    // 命名空间
-    initialState: { number: 0 },
-    reducers: {
-        add: (state, action) => state.number += 1,
-        minus: (state, action) => state.number -= action.payload
-    },
-    
-})
-const { actions: actions2, reducer: counter2Reducer } = counter2Slice
 
 
+const { reducer } = todoSlice
+// 创建仓库
+const store = configureStore({ reducer })
 
-let store = configureStore({
-    reducer: { counter1: counter1Reducer, counter2: counter2Reducer }
-})
-
-
-
-
-// 
-let valueEle = document.querySelector('#value')
-let valueEle2 = document.querySelector('#value2')
-let sumEle = document.querySelector('#sum')
-
-const selectCounter1 = state => state.counter1
-const selectCounter2 = state => state.counter2
-
-const totalSelector = createSelector(
-    [selectCounter1, selectCounter2],
-    (counter1, counter2) => {
-        console.log('计算总和');
-        return counter1.number + counter2.number
-    }
-)
-
-
-function render() {
-    valueEle.innerHTML = store.getState().counter1.number
-    valueEle2.innerHTML = store.getState().counter2.number
-    sumEle.innerHTML = totalSelector(store.getState())
-}
-
-render()
-
-store.subscribe(render)
-
-document.querySelector('#add').addEventListener('click', () => {
-    store.dispatch(actions1.add())
-})
-document.querySelector('#minus').addEventListener('click', () => {
-    store.dispatch(actions1.minus(2))
-})
-document.querySelector('#async-add').addEventListener('click', () => {
-    store.dispatch((dispatch) => {
-        // toolkit的configureStore内置了redux-thunk中间件
-        // 可以使dispatch接收一个函数
-        setTimeout(() => {
-            dispatch(actions1.add())
-        }, 1000)
-    })
-})
-
-
-document.querySelector('#add2').addEventListener('click', () => {
-    store.dispatch(actions2.add())
-})
-document.querySelector('#minus2').addEventListener('click', () => {
-    store.dispatch(actions2.minus(2))
-})
-document.querySelector('#async-add2').addEventListener('click', () => {
-    store.dispatch((dispatch) => {
-        // toolkit的configureStore内置了redux-thunk中间件
-        // 可以使dispatch接收一个函数
-        setTimeout(() => {
-            dispatch(actions2.add())
-        }, 1000)
-    })
+// 派发
+const p = store.dispatch(getTodoList(1))   // 会返回promise
+// 取消请求
+p.abort()
+p.then(data => {
+    console.log('成功', data)
+    setTimeout(() => {
+        console.log('请求成功', store.getState());
+    }, 1000);
+}).catch(err => {
+    console.log('失败', err)
+    setTimeout(() => {
+        console.log('请求失败', store.getState());
+    }, 1000);
 })

@@ -43,7 +43,7 @@ npm i redux redux-logger redux-thunk @reduxjs/toolkit express cors axios
 ## createSlice
 - createSlice函数允许我们提供一个带有`reducer函数的对象`，并且它讲根据我们列出的 `reducer名称` 自动生成 action type 字符串和 action creator 函数
 - createSlice返回一个`分片`对象，该对象包含生成的 `reducer函数` 作为一个名为reducer的字段，以及在一个名为 actions 的对象中生成的 action creator
-    - reducers参数： 一个包含case reducer函数的对象，它的key将被用来生成动作类型常量并在派发的时候可见
+    - reducers参数： 一个包含case reducer函数的对象，它的key将被用来生成动作类型type常量并在派发的时候可见
     - extraReducers参数： 允许createSlice去响应别的slice创建的动作类型，它们不会用来生成actions
 
 ## immer不可变数据(Toolkit已内置)
@@ -97,5 +97,5 @@ function createSelector(selectors, callback) {
 ## createAsyncThunk
 - 接收redux动作类型字符串和一个返回promise回调的函数
 - 它会基于你传递的动作类型前缀生成promise生命周期的动作类型
-- 并且返回一个thunk动作创建者，这个thunk动作创建者会运行promise回调并派发生命周期动作
+- 并且返回一个thunk动作创建者(actionCreator)，这个thunk动作创建者(actionCreator)会运行promise回调并派发生命周期动作
 - 它抽象了处理异步请求生命周期的标准推荐方法

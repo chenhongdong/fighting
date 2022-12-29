@@ -2,7 +2,7 @@ import { createAction, createReducer } from "./"
 
 
 function createSlice(options) {
-    const { name, initialState, reducers } = options
+    const { name, initialState, reducers = {}, extraReducers = {} } = options
     let actions = {}
 
     let prefixReducers = {}
@@ -13,7 +13,7 @@ function createSlice(options) {
         prefixReducers[type] = reducers[key]
     })
 
-    let reducer = createReducer(initialState, prefixReducers)
+    let reducer = createReducer(initialState, prefixReducers, extraReducers)
 
     return {
         actions,
