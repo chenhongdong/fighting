@@ -1,6 +1,6 @@
 
 
-function createAction(type, prepareAction = () => {}) {
+function createAction(type, prepareAction) {
     function actionCreator(payload) {
         if (prepareAction) {
             let prepared = prepareAction(payload)

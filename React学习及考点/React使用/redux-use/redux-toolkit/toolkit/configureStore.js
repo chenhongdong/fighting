@@ -24,6 +24,9 @@ function configureStore(options = {}) {
         rootReducer = combineReducers(reducer)
     }
 
+    // 中间件处理
+    middleware = typeof middleware === 'function' ? middleware(() => [thunk]) : middleware
+
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose
 
     return createStore(rootReducer, preloadedState, composeEnhancers(applyMiddleware(...middleware)))

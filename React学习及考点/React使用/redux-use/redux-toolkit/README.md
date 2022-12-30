@@ -99,3 +99,14 @@ function createSelector(selectors, callback) {
 - 它会基于你传递的动作类型前缀生成promise生命周期的动作类型
 - 并且返回一个thunk动作创建者(actionCreator)，这个thunk动作创建者(actionCreator)会运行promise回调并派发生命周期动作
 - 它抽象了处理异步请求生命周期的标准推荐方法
+
+
+
+## Redux Toolkit Query
+- `Redux Toolkit Query` 是一种高级的数据获取和缓存工具，意在简化web应用程序中加载数据的常见情况
+- 跟踪加载状态用来显示UI转圈组件
+- 避免对相同的数据进行重复请求
+- 优化UI的更新感觉更快
+- 根据用户的交互来管理缓存的生命周期
+- `createApi()`是 它的核心函数，允许你定义endpoints的集合用来描述如何获取数据，包含如何获取和转换数据
+- `fetchBaseQuery()` 一个用来简化请求的对fetch的封装
