@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!-- <script src="./questions.js" type="module"></script> -->
+<script type="module">
+    import allQuestions from './questions.js'
+    import randomArr from './数组/230103-随机数组.js'
+    const everyDay = randomArr(allQuestions).slice(0, 3)
+    console.log('每天', everyDay)
+    const obj = {} 
+
+    // const storageData = JSON.parse(localStorage.getItem('everyday'))
+    
+    // for (let i = 0; i < everyDay.length; i++) {
+    //     const item = everyDay[i]
+        
+    //     if (!storageData[item]) {
+    //         obj[item] = 1
+    //     } else {
+    //         obj[item] = storageData[item] + 1
+    //     }
+    // }
+    // localStorage.setItem('everyday', JSON.stringify(obj))
+</script>
