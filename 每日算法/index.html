@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="root"></div>
 </body>
 </html>
 
@@ -16,19 +16,8 @@
     import allQuestions from './questions.js'
     import randomArr from './数组/230103-随机数组.js'
     const everyDay = randomArr(allQuestions).slice(0, 3)
-    console.log('每天', everyDay)
-    const obj = {} 
+    const root = document.querySelector('#root')
+    root.innerHTML = everyDay
 
-    // const storageData = JSON.parse(localStorage.getItem('everyday'))
-    
-    // for (let i = 0; i < everyDay.length; i++) {
-    //     const item = everyDay[i]
-        
-    //     if (!storageData[item]) {
-    //         obj[item] = 1
-    //     } else {
-    //         obj[item] = storageData[item] + 1
-    //     }
-    // }
-    // localStorage.setItem('everyday', JSON.stringify(obj))
+    // "二叉搜索树的后序遍历序列","环形链表II","存在重复元素II"
 </script>
