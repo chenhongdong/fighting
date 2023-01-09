@@ -4,3 +4,5 @@
 2. connect
 
 3. mapStateToProps  mapDispatchToProps
+
+

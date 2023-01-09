@@ -1,13 +1,26 @@
 import React, { useState } from "react";
 import ClickCounter from "./components/ClickCounter";
+import FriendStatus from "./components/FriendStatus";
+import UseContext from "./components/UseContext";
+import UseReducer from "./components/UseReducer";
+import UseMemo from "./components/UseMemo";
+import UseCallback from "./components/UseCallback";
+
+
 
 function App() {
     const [flag, setFlag] = useState(true)
+    const [id, setId] = useState(1)
     return <div>
-        <div>
+        {/* <div>
             <button onClick={() => setFlag(!flag)}>开关</button>
-        </div>
-        { flag && <ClickCounter /> }
+            <button onClick={() => setId(id+1)}>id++</button>
+        </div> */}
+        {/* { flag && <FriendStatus friendId={id} /> } */}
+        {/* <UseContext /> */}
+        {/* <UseReducer /> */}
+        {/* <UseMemo /> */}
+        <UseCallback />
     </div>
 }
 

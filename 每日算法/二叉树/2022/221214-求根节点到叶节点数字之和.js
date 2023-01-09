@@ -10,9 +10,9 @@
 
 示例：
 
-        1
-       / \
-      2   3
+		1
+	   / \
+	  2   3
 
 输入：root = [1,2,3]
 输出：25
@@ -25,5 +25,19 @@ https://leetcode.cn/problems/sum-root-to-leaf-numbers/
 */
 
 const sumNumbers = root => {
+	let num = 0
+	dfs(root, '')
 
+	function dfs(root, str) {
+		if (!root) return 0
+		str += root.val
+		if (!root.left && !root.right) {
+			num += Number(str)
+			return
+		}
+		dfs(root.left, str)
+		dfs(root.right, str)
+	}
+
+	return num
 }

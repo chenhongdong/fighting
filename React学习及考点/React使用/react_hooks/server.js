@@ -10,8 +10,8 @@ app.use(logger('dev'))
 
 // http://localhost:9001/api/users?current=1&pageSize=5
 app.get('/api/users', (req, res) => {
-    const current = parseInt(req.query.current)
-    const pageSize = parseInt(req.query.pageSize)
+    const current = parseInt(req.query.current) || 1
+    const pageSize = parseInt(req.query.pageSize) || 5
     const total = 25    // 假设总数是25条
     const list = []
     let offset = (current - 1) * pageSize   // 本页条数的起始索引
