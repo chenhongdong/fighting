@@ -4,13 +4,13 @@ const path = require('path')
 const formidable = require('formidable')
 const fs = require('fs')
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200)
-    }
-    next()
-})
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*')
+//     if (req.method === 'OPTIONS') {
+//         return res.sendStatus(200)
+//     }
+//     next()
+// })
 
 const uploadDir = path.resolve(__dirname, 'uploads')
 
