@@ -18,9 +18,28 @@
 输出：[3,2,1,0]
 */
 const shortestToChar = (s, c) => {
+    const res = []
+    const len = s.length
 
+    for (let i = 0, idx = -len; i < len; i++) {
+        if (s[i] === c) {
+            idx = i
+        }
+        res[i] = i - idx
+    }
+
+    for (let i = len - 1, idx = 2 * len; i >= 0; i--) {
+        if (s[i] === c) {
+            idx = i
+        }
+        res[i] = Math.min(res[i], idx - i)
+    }
+
+    return res
 }
 
+console.log(shortestToChar('loveleetcode', 'e'))
+console.log(shortestToChar('aaab', 'b'))
 
 
 
@@ -37,5 +56,31 @@ const shortestToChar = (s, c) => {
 输出：[[0,1],[1,0]]
 */
 const permute = nums => {
-    
+    const res = []
+    const len = nums.length
+    const visited = Array(len).fill(0)
+
+    backtrack(nums, 0, [])
+
+    function backtrack(nums, index, path) {
+        if (index === len) {
+            res.push([...path])
+            return
+        }
+
+        for (let i = 0; i < len; i++) {
+            if (!visited[i]) {
+                visited[i] = 1
+                path.push(nums[i])
+                backtrack(nums, index + 1, path)
+                path.pop()
+                visited[i] = 0
+            }
+        }
+    }
+
+    return res
 }
+
+console.log(permute([1,2,3]))
+console.log(permute([0,1]))
