@@ -10,9 +10,21 @@
 解释：11 = 5 + 5 + 1
 */
 const coinChange = (coins, amount) => {
-
+    const dp = Array(amount + 1).fill(-1)
+    dp[0] = 0
+    for (let i = 1; i <= amount; i++) {
+        for (let j = 0; j < coins.length; j++) {
+            if (coins[j] <= i && dp[i - coins[j]] !== -1) {
+                if (dp[i] === -1 || dp[i] > dp[i - coins[j]] + 1) {
+                    dp[i] = dp[i - coins[j]] + 1
+                }
+            }
+        }
+    }
+    return dp[amount]
 }
 
+console.log(coinChange([1, 2, 5], 11))
 
 
 /* 
@@ -29,5 +41,21 @@ const coinChange = (coins, amount) => {
 输出：[[],[0]]
 */
 const subsets = nums => {
-    
+    const res = []
+    backtrack(nums, 0, [])
+
+    function backtrack(nums, index, path) {
+        res.push([...path])
+
+        for (let i = index; i < nums.length; i++) {
+            path.push(nums[i])
+            backtrack(nums, i + 1, path)
+            path.pop()
+        }
+    }
+    return res
 }
+
+console.log(subsets([1,2,3]))
+console.log(subsets([1,2]))
+console.log(subsets([1]))
