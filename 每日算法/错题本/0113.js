@@ -9,9 +9,19 @@
 解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。
 */
 const lengthOfLIS = nums => {
-    
-}
+    const len = nums.length
+    const dp = Array(len).fill(1)
 
+    for (let i = 1; i < len; i++) {
+        for (let j = 0; j < i; j++) {
+            if (nums[j] < nums[i]) {
+                dp[i] = Math.max(dp[i], dp[j] + 1)
+            }
+        }
+    }
+    return Math.max(...dp)
+}
+console.log(lengthOfLIS([10,9,2,5,3,7,101,18]));
 
 /* 
 2. 路径总和II
@@ -27,5 +37,21 @@ const lengthOfLIS = nums => {
 输出：[]
 */
 const pathSum = (root, target) => {
+    const res = []
 
+    find(root, target, [])
+
+    function find(root, target, path) {
+        if (!root) return
+        path.push(root.val)
+        target -= root.val
+        if (!root.left && !root.right && target === 0) {
+            res.push([...path])
+        }
+        find(root.left, target, path)
+        find(root.right, target, path)
+        path.pop()
+    }
+
+    return res
 }

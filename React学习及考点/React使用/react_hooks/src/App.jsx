@@ -18,9 +18,9 @@ function App() {
         </div> */}
         {/* { flag && <FriendStatus friendId={id} /> } */}
         {/* <UseContext /> */}
-        {/* <UseReducer /> */}
+        <UseReducer initialCount={10} />
         {/* <UseMemo /> */}
-        <UseCallback />
+        {/* <UseCallback /> */}
     </div>
 }
 
