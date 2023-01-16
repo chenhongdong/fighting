@@ -12,5 +12,21 @@
 输出：[]
 */
 const pathSum = (root, target) => {
+    const res = []
 
+    find(root, target, [])
+
+    function find(root, target, path) {
+        if (!root) return
+        path.push(root.val)
+        target -= root.val
+        if (!root.left && !root.right && target === 0) {
+            res.push([...path])
+        }
+        find(root.left, target, path)
+        find(root.right, target, path)
+        path.pop()
+    }
+
+    return res
 }
