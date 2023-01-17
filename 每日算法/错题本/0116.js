@@ -11,5 +11,18 @@
 输出：[5]
 */
 const reverseBetween = (head, left, right) => {
-    
+    const dummy = new ListNode(0)
+    dummy.next = head
+    let pre = dummy
+    for (let i = 0; i < left - 1; i++) {
+        pre = pre.next
+    }
+    let cur = pre.next
+    for (let i = 0; i < right - left; i++) {
+        const next = cur.next
+        cur.next = next.next
+        next.next = pre.next
+        pre.nexg = next
+    }
+    return dummy.next
 }
