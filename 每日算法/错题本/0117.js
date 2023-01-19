@@ -19,8 +19,18 @@
 向下 -> 向右 -> 向下
 */
 const uniquePaths = (m, n) => {
+    const dp = Array(m).fill().map(() => Array(n).fill(1))
 
+    for (let i = 1; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+        }
+    }
+
+    return dp[m - 1][n - 1]
 }
+console.log(uniquePaths(3, 7))
+console.log(uniquePaths(3, 2))
 
 
 
@@ -37,21 +47,59 @@ const uniquePaths = (m, n) => {
 输出：[9, 5, 9, 9, 9, -1, -1, 5, -1]
 */
 const findMaxRight = arr => {
-    
+    const res = []
+    const stack = []
+    let index = 0
+
+    while (index < arr.length) {
+        const top = stack[stack.length - 1]
+        if (arr[top] < arr[index]) {
+            res[stack.pop()] = arr[index]
+        } else {
+            stack.push(index++)
+        }
+    }
+
+    while (stack.length) {
+        res[stack.pop()] = -1
+    }
+
+    return res
 }
+console.log(findMaxRight([1, 5, 3, 6, 4, 8, 9, 10]))
+console.log(findMaxRight([8, 2, 5, 4, 3, 9, 7, 2, 5]))
 
 
 
 /* 
 3. 整数拆分
 给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。
-
 示例 1:
-输入: 2 输出: 1 解释: 2 = 1 + 1, 1 × 1 = 1。
+输入: 2
+输出: 1
+解释: 2 = 1 + 1, 1 × 1 = 1。
 
 示例 2:
-输入: 10 输出: 36 解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。
+输入: 10
+输出: 36
+解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。
+
+提示: 2 <= n <= 58。
 */
 const integerBreak = n => {
-    
+    const memo = Array(n + 1).fill(0)
+
+    function splitNum(n) {
+        if (memo[n]) {
+            return memo[n]
+        }
+        for (let i = 1; i < n; i++) {
+            memo[n] = Math.max(memo[n], i * (n - i), i * splitNum(n - i))
+        }
+        return memo[n]
+    }
+
+    return splitNum(n)
 }
+console.log(integerBreak(2))
+console.log(integerBreak(10))
